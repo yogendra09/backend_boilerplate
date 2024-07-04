@@ -32,7 +32,7 @@ exports.logout = catchAsyncErrors(async (req, res, next) => {
 
   const option = {
     exipres: new Date(),
-    // httpOnly: true,
+    httpOnly: true,
     secure:true
   };
   res
