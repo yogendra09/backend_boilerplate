@@ -27,9 +27,6 @@ exports.login = catchAsyncErrors(async (req, res, next) => {
 });
 
 exports.logout = catchAsyncErrors(async (req, res, next) => {
-  const user = req.user;
-  const token = user.getjwttoken();
-
   const option = {
     exipres: new Date(),
     httpOnly: true,
