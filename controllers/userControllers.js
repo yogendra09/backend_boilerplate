@@ -11,7 +11,7 @@ exports.currentUser = catchAsyncErrors(async (req, res, next) => {
 exports.register = catchAsyncErrors(async (req, res, next) => {
   const user = new User(req.body);
   await user.save();
-  res.json({ success: true, message: "user created", user });
+  sendtoken(user, 200, res);
 });
 
 exports.login = catchAsyncErrors(async (req, res, next) => {
