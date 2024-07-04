@@ -27,6 +27,16 @@ exports.login = catchAsyncErrors(async (req, res, next) => {
 });
 
 exports.logout = catchAsyncErrors(async (req, res, next) => {
-  res.clearCookie("token");
-  res.json({ message: "successfully signout" });
+  const user = req.user;
+  const token = user.getjwttoken();
+
+  const option = {
+    exipres: new Date(),
+    // httpOnly: true,
+    secure:true
+  };
+  res
+    .status(200)
+    .cookie("token",'', option)
+    .json({ message: "user logout!" });
 });
